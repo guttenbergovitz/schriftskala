@@ -36,4 +36,14 @@ describe('skala 10 | 1.5', () => {
   })
 })
 
+describe('skala down 10 | 1.5', () => {
+  let skala = new Skala(10, 1.5)
+  test('down 1', () => {
+    expect(skala.down(1).fontSize).toEqual(6.666666666666667)
+  })
+  test('down 2', () => {
+    expect(skala.down(2).fontSize).toEqual(4.444444444444445)
+  })
+})
+
 
