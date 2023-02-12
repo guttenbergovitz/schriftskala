@@ -1,56 +1,64 @@
+import round from './bones/round'
+
+import { BaseFontSize, BaseLineHeight, ReturnType, Unit } from './bones/types';
+
 class Skala {
   constructor(
     private _baseFontSize: BaseFontSize,
     private _typescale: number = 1.25,
     private _lineHeightMultiplier: BaseLineHeight = 1.33,
     private _unit: Unit =  'px',
+    private _precision: number = 0,
   ) {}
 
   public get baseFontSize() {
     return this._baseFontSize;
   }
 
-  public up(n: number): {
-    fontSize: number;
-    lineHeight:  number;
-  } {
+  public up(n: number): ReturnType {
     if (n === 0) {
       return {
-        fontSize: this._baseFontSize,
-        lineHeight: this._lineHeightMultiplier,
+        fs: round(this._baseFontSize, this._precision),
+        lh: round(this._lineHeightMultiplier * this._baseFontSize, this._precision),
+        unit: this._unit,
+        printFontSize: `${round(this._baseFontSize, this._precision)}${this._unit}`,
+        printLineHeight: `${round(this._lineHeightMultiplier * this._baseFontSize, this._precision)}${this._unit}`,
       };
     }
 
-    const { fontSize, lineHeight } = this.up(n - 1);
+    const { fs } = this.up(n - 1);
 
     return {
-      fontSize: fontSize * this._typescale,
-      lineHeight: lineHeight * this._typescale,
+      fs: round(fs * this._typescale, this._precision),
+      lh: round(this._lineHeightMultiplier * fs * this._typescale, this._precision),
+      unit: this._unit,
+      printFontSize: `${round(fs * this._typescale, this._precision)}${this._unit}`,
+      printLineHeight: `${round(this._lineHeightMultiplier * fs * this._typescale, this._precision)}${this._unit}`,
     };
   }
 
-  public down(n: number): {
-    fontSize: number;
-    lineHeight:  number;
-  } {
+  public down(n: number): ReturnType {
     if (n === 0) {
       return {
-        fontSize: this._baseFontSize,
-        lineHeight: this._lineHeightMultiplier,
+        fs: round(this._baseFontSize, this._precision),
+        lh: round(this._lineHeightMultiplier * this._baseFontSize, this._precision),
+        unit: this._unit,
+        printFontSize: `${round(this._baseFontSize, this._precision)}${this._unit}`,
+        printLineHeight: `${round(this._lineHeightMultiplier * this._baseFontSize * this._typescale, this._precision)}${this._unit}`,
       };
     }
 
-    const { fontSize, lineHeight } = this.down(n - 1);
+    const { fs } = this.down(n - 1);
 
     return {
-      fontSize: fontSize / this._typescale,
-      lineHeight: lineHeight / this._typescale,
+      fs: round(fs / this._typescale, this._precision),
+      lh: round(this._lineHeightMultiplier * (fs / this._typescale), this._precision),
+      unit: this._unit,
+      printFontSize: `${round(fs / this._typescale, this._precision)}${this._unit}`,
+      printLineHeight: `${round(this._lineHeightMultiplier * (fs / this._typescale), this._precision)}${this._unit}`,
     }
   }
 }
 
-type BaseFontSize = number;
-type BaseLineHeight = number;
-type Unit = 'px' | 'em' | 'rem';
 
 export default Skala;
