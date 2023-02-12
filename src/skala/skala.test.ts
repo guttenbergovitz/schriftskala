@@ -12,6 +12,16 @@ describe('class structure', () => {
   })
 })
 
+describe('base', () => {
+  const skala = new Skala(10, 1.5, 2, 'px', 0)
+  test('should return a object', () => {
+    expect(skala.base()).toBeInstanceOf(Object)
+  })
+  test('should have base method', () => {
+    expect(skala.base).toBeInstanceOf(Function)
+  })
+})
+
 describe('up', () => {
   const skala = new Skala(10, 1.5, 2, 'px', 0)
   test('should return a object', () => {
@@ -61,5 +71,15 @@ describe('down', () => {
     expect(skala.down(0).unit).toBe('px')
     expect(skala.down(1).fs).toBe(7)
     expect(skala.down(1).lh).toBe(13)
+  })
+})
+
+describe('generate', () => {
+  test('should return a object', () => {
+    expect(new Skala(10, 1.5, 2, 'px', 0).generate()).toBeInstanceOf(Object)
+    expect(new Skala(10, 1.5, 2, 'px', 0).generate()).toHaveProperty('up')
+    expect(new Skala(10, 1.5, 2, 'px', 0).generate()).toHaveProperty('down')
+    expect(new Skala(10, 1.5, 2, 'px', 0).generate().base).toBeInstanceOf(Object)
+    expect(Array.isArray(new Skala(10, 1.5, 2, 'px', 0).generate().up)).toBe(true)
   })
 })

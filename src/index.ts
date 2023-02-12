@@ -1,1 +1,3 @@
-console.log('Hello SchriftSkala');
+import { Skala } from './skala'
+
+export { Skala }
