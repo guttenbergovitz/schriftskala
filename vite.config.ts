@@ -6,7 +6,7 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
       name: 'schriftskala',
-      fileName: 'schriftskala',
+      fileName: 'index',
     },
   },
   plugins: [dts()],

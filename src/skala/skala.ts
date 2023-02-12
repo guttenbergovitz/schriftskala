@@ -1,6 +1,6 @@
-import round from './bones/round'
+import round from './lib/round'
 
-import { BaseFontSize, BaseLineHeight, ReturnType, Unit } from './bones/types';
+import { BaseFontSize, BaseLineHeight, ReturnType, Unit } from './lib/types';
 
 class Skala {
   constructor(
