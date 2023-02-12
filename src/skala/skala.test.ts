@@ -12,6 +12,16 @@ describe('class structure', () => {
   })
 })
 
+describe('base', () => {
+  const skala = new Skala(10, 1.5, 2, 'px', 0)
+  test('should return a object', () => {
+    expect(skala.base()).toBeInstanceOf(Object)
+  })
+  test('should have base method', () => {
+    expect(skala.base).toBeInstanceOf(Function)
+  })
+})
+
 describe('up', () => {
   const skala = new Skala(10, 1.5, 2, 'px', 0)
   test('should return a object', () => {
