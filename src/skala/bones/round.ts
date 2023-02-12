@@ -1,4 +1,4 @@
-function round(n: number, precision: number = 2): number {
+function round(n: number, precision = 2) {
   return Math.round(n * 10 ** precision) / 10 ** precision;
 }
 

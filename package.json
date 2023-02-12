@@ -1,6 +1,6 @@
 {
   "name": "schriftskala",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "",
   "author": "guttenbergovitz <guttenbergovitz@gmail.com>",
   "license": "MIT",
@@ -11,9 +11,11 @@
     "dist"
   ],
   "scripts": {
-    "build": "vite build",
+    "build": "pnpm run lint --fix && vite build",
     "test": "vitest",
-    "coverage": "vitest --coverage"
+    "coverage": "vitest --coverage",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix"
   },
   "keywords": [
     "schriftskala",
@@ -25,6 +27,12 @@
     "typo scale"
   ],
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.51.0",
+    "@typescript-eslint/parser": "^5.51.0",
+    "eslint": "^8.34.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-import": "^2.27.5",
+    "prettier": "^2.8.4",
     "typescript": "^4.9.5",
     "vite": "^4.1.1",
     "vite-plugin-dts": "^1.7.2",

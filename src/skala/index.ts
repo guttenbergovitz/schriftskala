@@ -1,3 +1,3 @@
-import Skala from "./skala"
+import Skala from './skala'
 
 export { Skala }
