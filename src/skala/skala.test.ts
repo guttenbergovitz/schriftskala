@@ -73,3 +73,13 @@ describe('down', () => {
     expect(skala.down(1).lh).toBe(13)
   })
 })
+
+describe('generate', () => {
+  test('should return a object', () => {
+    expect(new Skala(10, 1.5, 2, 'px', 0).generate()).toBeInstanceOf(Object)
+    expect(new Skala(10, 1.5, 2, 'px', 0).generate()).toHaveProperty('up')
+    expect(new Skala(10, 1.5, 2, 'px', 0).generate()).toHaveProperty('down')
+    expect(new Skala(10, 1.5, 2, 'px', 0).generate().base).toBeInstanceOf(Object)
+    expect(Array.isArray(new Skala(10, 1.5, 2, 'px', 0).generate().up)).toBe(true)
+  })
+})

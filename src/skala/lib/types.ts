@@ -9,7 +9,7 @@ type ReturnType = {
   unit: Unit;
   printFontSize: string;
   printLineHeight: string;
-  inspect?: InspectBaselineMatch;
+  inspect?: InspectBaselineMatch | null;
 }
 
 export { BaseFontSize, BaseLineHeight, Unit, ReturnType}
