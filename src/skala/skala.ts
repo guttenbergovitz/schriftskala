@@ -25,9 +25,8 @@ class Skala {
     down: ReturnType[]
   } {
     const base = this.base()
-    // As array keys start at 0, we need to add 1 to the number of steps to get the correct number of steps making 0 the base.
-    const up = [this.base(), ...[...Array(stepsUp + 1).keys()].map(n => this.up(n as number))]
-    const down = [this.base(), ...[...Array(stepsDown + 1).keys()].map(n => this.down(n as number))]
+    const up = [...Array(stepsUp + 1).keys()].map(n => this.up(n as number))
+    const down = [...Array(stepsDown + 1).keys()].map(n => this.down(n as number))
     return { base, up, down }
   }
 
