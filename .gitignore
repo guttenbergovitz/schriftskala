@@ -1,3 +1,14 @@
+/* misc */
+.DS_Store
+Thumbs.db
+
+/* ide */
 .idea
+.vscode
+
+/* node & build */
 node_modules
 dist
+
+/* parcel */
+.parcel-cache

@@ -1,11 +1,15 @@
 {
   "name": "schriftskala",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "dist/index.js",
+  "module": "dist/index.es.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc",
+    "parcel": "parcel build src/index.ts",
+    "parcel:watch": "parcel watch src/index.ts",
+    "build": "pnpm run parcel",
+    "dev": "pnpm run parcel:watch",
     "test": "vitest",
     "test:cov": "vitest --coverage"
   },
@@ -13,6 +17,9 @@
   "author": "guttenbergovitz <guttenbergovitz@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@parcel/packager-ts": "^2.8.3",
+    "@parcel/transformer-typescript-types": "^2.8.3",
+    "parcel": "^2.8.3",
     "typescript": "^4.9.5",
     "vitest": "^0.28.4"
   }
