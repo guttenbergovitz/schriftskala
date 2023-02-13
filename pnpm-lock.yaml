@@ -7,6 +7,7 @@ specifiers:
   '@typescript-eslint/parser': ^5.51.0
   chalk: ^5.2.0
   commander: ^10.0.0
+  cssbeautify: ^0.3.1
   eslint: ^8.34.0
   eslint-config-prettier: ^8.6.0
   eslint-plugin-import: ^2.27.5
@@ -29,6 +30,7 @@ devDependencies:
   '@types/figlet': 1.5.5
   '@typescript-eslint/eslint-plugin': 5.51.0_z4swst3wuuqk4hlme4ajzslgh4
   '@typescript-eslint/parser': 5.51.0_7kw3g6rralp5ps6mg3uyzz6azm
+  cssbeautify: 0.3.1
   eslint: 8.34.0
   eslint-config-prettier: 8.6.0_eslint@8.34.0
   eslint-plugin-import: 2.27.5_62tsymtiqxebhmxuag4hg3gx2m
@@ -893,6 +895,11 @@ packages:
       path-key: 3.1.1
       shebang-command: 2.0.0
       which: 2.0.2
+    dev: true
+
+  /cssbeautify/0.3.1:
+    resolution: {integrity: sha512-ljnSOCOiMbklF+dwPbpooyB78foId02vUrTDogWzu6ca2DCNB7Kc/BHEGBnYOlUYtwXvSW0mWTwaiO2pwFIoRg==}
+    hasBin: true
     dev: true
 
   /debug/3.2.7:

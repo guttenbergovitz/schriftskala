@@ -1,6 +1,6 @@
 {
   "name": "schriftskala",
-  "version": "0.0.23",
+  "version": "0.0.25",
   "description": "",
   "author": "guttenbergovitz <guttenbergovitz@gmail.com>",
   "license": "MIT",
@@ -34,6 +34,7 @@
     "@types/figlet": "^1.5.5",
     "@typescript-eslint/eslint-plugin": "^5.51.0",
     "@typescript-eslint/parser": "^5.51.0",
+    "cssbeautify": "^0.3.1",
     "eslint": "^8.34.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-import": "^2.27.5",

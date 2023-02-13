@@ -1,5 +1,8 @@
 #!/usr/bin/env node
 
+import * as fs from 'fs';
+import beautify from 'cssbeautify';
+
 import { Command } from 'commander'
 import { Skala } from './dist/index.mjs'
 import chalk from 'chalk'
@@ -12,17 +15,35 @@ program
   .command('manual')
   .description('run skala by manual params')
   .requiredOption('-b, --base <base>', 'base size')
-  .requiredOption('-s, --scale <scale>', 'scale')
-  .requiredOption('-lh, --line-height <lineHeight>', 'line height')
-  .option('-u, --unit <unit>', 'unit')
+  .option('-s, --scale <scale>', 'scale', 1.313)
+  .option('-lh, --lineheight <lineheight>', 'line height', 1.2)
+  .option('-u, --unit <unit>', 'unit', 'px')
+  .option('-p, --precision <precision>', 'output file', 2)
+  .option('-f, --output <file>', 'file name', 'skala.css')
   .action((options) => {
-    const { base, scale, lineHeight, unit } = options
-    const skala = new Skala(base, scale, lineHeight, unit)
+    const { base, scale, lineheight, unit, precision } = options
+    console.log(options)
+    const skala = (new Skala(parseFloat(base), parseFloat(scale), parseFloat(lineheight), unit, parseFloat(precision))).generate(10,3)
     console.log(JSON.stringify(options, null, 2))
     console.log(chalk.green(figlet.textSync('SchriftSkala', { horizontalLayout: 'full', font: 'Caligraphy' })))
     console.dir(skala, { depth: null })
-    console.dir(skala.up(2), { depth: null })
+    const css = `
+      :root {
+        --ss-base: ${skala.base.printFontSize};
+        ${skala.up.map((size, index) => ` --ss-up-${index}-fs: ${size.printFontSize};`).join('\n')}
+        ${skala.up.map((size, index) => ` --ss-up-${index}-lh: ${size.printLineHeight};`).join('\n')}
+        ${skala.down.map((size, index) => ` --ss-down-${index}-fs: ${size.printFontSize};`).join('\n')}
+        ${skala.down.map((size, index) => ` --ss-down-${index}-lh: ${size.printLineHeight};`).join('\n')}
+      }
+    `
+    const cleanCSS = beautify(css, { indent: '  ', autosemicolon: true })
+    fs.writeFileSync(options.output, cleanCSS, (err) => {
+      console.log(err)
+      process.exit(1)
+    })
   })
+
+
 
 program
   .command('guided')
